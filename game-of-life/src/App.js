@@ -1,26 +1,49 @@
 import React, { Component } from 'react';
-import './App.css';
+import "./App.css";
+import "./styles/layout.css";
+
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      size: [30, 5],
+      size: [50, 25],
+      gameIsRunning: false,
     }
-    this.handleRowChange = this.handleRowChange.bind(this);
     this.handleColumnChange = this.handleColumnChange.bind(this);
+    this.handleRowChange = this.handleRowChange.bind(this);
+    this.renderCanvas = this.renderCanvas.bind(this);
     this.startGame = this.startGame.bind(this);
     this.stopGame = this.stopGame.bind(this);
-    this.renderCanvas = this.renderCanvas.bind(this);
+    
+  }
+  
+  
+
+  handleColumnChange(event) {
+    if(!this.state.gameIsRunning){
+      var recentSize = this.state.size;
+      if (event.target.value < 50)
+      recentSize[0] = event.taget.value;
+      else
+      recentSize[0] = 50;
+
+      this.setState({
+        size: recentSize,
+      });
+
+      this.renderCanvas();
+    }
+
   }
   handleRowChange(event) {
     if (!this.state.gameIsRunning){
       var recentSize =this.state.size;
 
-      if(event.target.value < 30)
-      recentSize[0] =event.target.value;
+      if(event.target.value < 25)
+      recentSize[1] =event.target.value;
       else
-      recentSize[0]= 30;
+      recentSize[1]= 25;
 
       this.setState({
         size: recentSize,
@@ -30,32 +53,14 @@ export default class App extends Component {
     }
   }
 
-  
-
-  handleColumnChange(event) {
-    if(!this.state.gameIsRunning){
-      var recentSize =this.state.size;
-      if (event.target.value < 5)
-      recentSize[0] = event.taget.value;
-      else
-      recentSize[0] = 5;
-
-      this.setState({
-        size: recentSize,
-      });
-
-      this.renderCanvas();
-    }
-
-  }
 
   
   renderCanvas() {
     var newCanvas = [];
     var rowCells = [];
 
-    for(var i = 0; i < this.state.size[0]; i++) {
-      for (var j = 0; j < this.state.size[1]; j++){
+    for(var j = 0; j < this.state.size[0]; j++) {
+      for (var i = 0; i < this.state.size[1]; i++){
           rowCells.push(<Cell key={[i, j]} />);
         }
         newCanvas.push(<div className="row" key={i}>{rowCells}</div>);
@@ -112,7 +117,7 @@ export default class App extends Component {
         </div>
           <label className="label">
                 Columns:
-                <input className="input" type="text" value={this.state.size[1]} onChange={this.handleColumnChange} />
+                <input className="input" type="text" value={this.state.size[0]} onChange={this.handleColumnChange} />
               </label>
 
             <label className="label">
@@ -132,7 +137,8 @@ export default class App extends Component {
 class Cell extends Component {
   render() {
     return (
-      <div className="cell-container">
+      <div className="cell-around">
+      <div className="cell-container"></div>
       </div>
     );
   }

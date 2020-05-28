@@ -1,5 +1,6 @@
 body{
   font-family: 'Montserrat', sans-serif;
+ 
 }
 /* .container {
   display: flex;
@@ -56,11 +57,21 @@ body{
   padding: 0 10px 15px;
   border-radius: 55px;
 }
+.row{
+  border: 0.5px solid white;
+  
+}
+
+.cell-around{
+  background-color: white;
+}
 
 .cell-container{
   display: flex;
   flex: 1;
-  padding: 8px;
-  margin: 1.5px;
+  padding: 9px;
+  margin: 0.5px;
   border: 1px solid gray;
+  border-radius: 50px;
+  background-color: white;
 }
