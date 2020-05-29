@@ -17,7 +17,7 @@ body{
   flex: 1;
 }
 
-.canvas-section {
+.label-container {
   display: flex;
   text-align: center;
   width: 300px;
@@ -57,21 +57,34 @@ body{
   padding: 0 10px 15px;
   border-radius: 55px;
 }
-.row{
-  border: 0.5px solid white;
-  
-}
+
 
 .cell-around{
-  background-color: white;
+  background-color: purple;
+  border-radius: 50px;
 }
-
-.cell-container{
+.cellContainer{
   display: flex;
   flex: 1;
-  padding: 9px;
-  margin: 0.5px;
-  border: 1px solid gray;
+  padding: 10px;
+  margin: 1px;
+  border: 1px solid black;
   border-radius: 50px;
-  background-color: white;
+}
+
+.dead-cells{
+  display: flex;
+  padding: 10px;
+  margin: 1px;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+
+.live-cells {
+  display: flex;
+  padding: 10px;
+  margin: 1px;
+  border: 1px solid black;
+  background-color: black;
+  border-radius: 50px;
 }
